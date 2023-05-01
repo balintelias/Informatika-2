@@ -1,27 +1,27 @@
-drop schema if exists bandpage;
-CREATE SCHEMA bandpage DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
-use bandpage;
+DROP SCHEMA `nagyHF`;
 
-/*
+CREATE SCHEMA IF NOT EXISTS `nagyHF` DEFAULT CHARACTER SET utf8 ;
+USE `nagyHF`;
 
-DROP EVERYTHING
+DROP TABLE IF EXISTS `nagyHF`.`users`;
 
-*/
-
-create table user
-(
-userid numeric(10,0) primary key,
-familyname varchar(30),
-givenname varchar(30),
-usertype ENUM('singer', 'musician', 'songwriter', 'producer')
+CREATE TABLE IF NOT EXISTS `nagyHF`.`users`(
+    userid int AUTO_INCREMENT PRIMARY key,
+    familyname nvarchar(30),
+    givenname nvarchar(30),
+    usertype ENUM('singer', 'musician', 'songwriter', 'producer')
 );
 
-create table song
-(
-songid numeric(10,0) primary key,
-title varchar(30)
+DROP TABLE IF EXISTS `nagyHF`.`songs`;
+
+CREATE TABLE IF NOT EXISTS `nagyHF`.`songs`(
+    songid int auto_increment primary key,
+    title varchar(30),
+    szerzoId int
 );
 
-create database INFO2;
+insert into users (familyname, givenname, usertype) VALUES ("balint", "elias", "producer");
+insert into users (familyname, givenname, usertype) VALUES ("molnar", "lehel", "musician");
+insert into users (familyname, givenname, usertype) VALUES ("szabo", "domitomi", "singer");
 
-create table user
+SELECT familyname FROM users;
