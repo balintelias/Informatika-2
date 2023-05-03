@@ -5,18 +5,18 @@ USE `nagyHF`;
 
 DROP TABLE IF EXISTS `nagyHF`.`users`;
 CREATE TABLE IF NOT EXISTS `nagyHF`.`users`(
-    id int AUTO_INCREMENT PRIMARY key,
+    username nvarchar(30) PRIMARY KEY,
     password nvarchar(255) NOT NULL,
     familyname nvarchar(30),
     givenname nvarchar(30),
-
+    CSS_setting boolean,
     usertype ENUM('singer', 'musician', 'songwriter', 'producer')
 );
 
 DROP TABLE IF EXISTS `nagyHF`.`songs`;
 CREATE TABLE IF NOT EXISTS `nagyHF`.`songs`(
     id int auto_increment primary key,
-    title varchar(30),
+    title varchar(30)
     -- szerzoId int
 );
 
@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS `nagyHF`.`bands`(
     name nvarchar(30)
 );
 
-DROP TABLE IF EXISTS `HF`.`songband`;
-CREATE TABLE IF NOT EXISTS `HF`.`songband`(
+DROP TABLE IF EXISTS `nagyHF`.`songband`;
+CREATE TABLE IF NOT EXISTS `nagyHF`.`songband`(
     id int auto_increment primary key,
     songid int,
     bandid int,
@@ -36,17 +36,17 @@ CREATE TABLE IF NOT EXISTS `HF`.`songband`(
     foreign key (bandid) references bands(id)
 );
 
-DROP TABLE IF EXISTS `HF`.`userband`;
-CREATE TABLE IF NOT EXISTS `HF`.`userband`(
+DROP TABLE IF EXISTS `nagyHF`.`userband`;
+CREATE TABLE IF NOT EXISTS `nagyHF`.`userband`(
     id int auto_increment primary key,
-    userid int,
+    username nvarchar(30),
     bandid int,
-    foreign key (userid) references users(id),
+    foreign key (username) references users(username),
     foreign key (bandid) references bands(id)
 );
 
-insert into users (familyname, givenname, usertype) VALUES ("balint", "elias", "producer");
-insert into users (familyname, givenname, usertype) VALUES ("molnar", "lehel", "musician");
-insert into users (familyname, givenname, usertype) VALUES ("szabo", "domitomi", "singer");
+insert into users (username, password, familyname, givenname, usertype) VALUES ("balintelias", "password", "balint", "elias", "producer");
+insert into users (username, password, familyname, givenname, usertype) VALUES ("molnarlehel", "password", "molnar", "lehel", "musician");
+insert into users (username, password, familyname, givenname, usertype) VALUES ("szabodomitomi", "password", "szabo", "domitomi", "singer");
 
--- SELECT familyname FROM users;
+SELECT * FROM users WHERE username='balintelias' AND password='password';
