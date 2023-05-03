@@ -36,22 +36,44 @@ nav {
 }
 
 .loginregister{
-  
+  width: 20%;
+  height: 50%;
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  right: 40%;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: gray;
+
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.userinfo{
   width: 400px;
   height: 500px;
-  top: 25%;
+  top: 30%;
   position: absolute;
   right: 8%;
   border-radius: 10px;
-  background-color: blue;
+  border-radius: 1%;
+  padding: 1%;
+  background-color: gray;
 }
 
 .toplist{
   width: 800px;
   height: 500px;
-  top: 25%;
+  top: 30%;
   position:absolute;
   left: 8%;
   /*border-radius: 10px;*/
   background-color: gray;
+}
+
+#logout{
+  position: absolute;
+  right: 0%;
 }
